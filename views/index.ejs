@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART PARKING SYSTEM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type = "text/css">
+
+      .data{
+
+        display:none;
+      }
+
+      .rang0{
+        background-color: red;
+      }
+
+      .rang1{
+        background-color: green;
+      }
+
+      .align{
+        text-align: center;
+        margin-top: 70px;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class></div>
+
+
+    <div class="" >
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="margin-bottom:100px;">
+
+        <a class="navbar-brand" href="#"><svg style="margin-right:1rem;"xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app-indicator" viewBox="0 0 16 16">
+          <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+          <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>Smart Parking System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://riju-tejas-singh.github.io/contactUSCHS.github.io/">Contact Us <span class="sr-only">(current)</span></a>
+              <!-- <a class="nav-link" href="">Records</a> -->
+            </li>
+            <a class="nav-link" href="https://rvr-chs-webapp.herokuapp.com/">Profile <span class="sr-only">(current)</span></a>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="" style="margin-bottom:100px;"></div>
+
+      <div class="row" >
+
+        <div class = "column" style ="width: 100%; margin: 40px 40px 40px 40px;">
+          <div class="row">
+              <div class="column" style="width:100%;" >
+                <div class="jumbotron">
+                  <h1 class=" display-4 ml3" style=" text-align: center; font-weight: 900; font-size: 3.5em; margin-bottom: 50px;">Welcome to the Smart Parking System</h1>
+                  <p class="lead" style="margin-top: 10px;" >This is an Smart Parking System Web app designed to find the current status of the parking lot. And to check wether is there any parking slot or not.</p>
+                  <hr class="my-4">
+                  <p>This Website is created by the RVR group and based on the data collected by our hardware created by us only.</p>
+                  <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                  </p>
+                </div>
+              </div>
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+            <br>
+
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 col-md-6">
+              <div class="card rang<%=arr[0]%>" style=" height:300px;margin-left: 40px; margin-bottom: 30px;">
+
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;"><h3 style="text-align: center;">SLOT #1</h3></h5>
+                  <h4><div class="align"> <%=fill[arr[0]] %></div></h4>
+                </div>
+              </div>
+              </div>
+
+              <div class="col-lg-3 col-sm-12 col-md-6">
+                <div class="card rang<%=arr[1]%>" style=" height:300px;margin-left: 40px; margin-bottom: 30px;">
+
+                  <div class="card-body" >
+                    <h5 class="card-title" ><h3 style="text-align: center;">SLOT #2</h3></h5>
+                    <h4><div class="align"> <%=fill[arr[1]] %></div></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-sm-12 col-md-6">
+                <div class="card rang<%=arr[2]%>" style="height:300px;margin-left: 40px; margin-bottom: 30px;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;"> <h3 style="text-align: center;">SLOT #3</h3></h5>
+                    <h4><div class="align"> <%=fill[arr[2]] %></div></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-sm-12 col-md-6">
+              <div class="card rang<%=arr[3]%>" style=" height:300px;margin-left: 40px; margin-bottom: 30px;">
+
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;"><h3 style="text-align: center;">SLOT #4</h3></h5>
+                  <h4><div class="align"> <%=fill[arr[3]] %></div></h4>
+                </div>
+              </div>
+            </div>
+
+
+
+            </div>
+
+
+
+
+            <br>
+
+
+
+
+
+
+
+            </div>
+
+
+            <br>
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+      <input class  = "data" id = "data1" value  = <%= data[1].field1%>>
+    <input class  = "data" id = "data2" value  = <%= data[1].field2 %>>
+    <input class  = "data" id = "data3" value  = <%= data[1].field3 %>>
+    <input class  = "data" id = "data4" value  = <%= data[1].field4 %>>
+    <input class  = "data" id = "data5" value  = <%= data[1].field5 %>>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var temp  = document.getElementById("data1").value;
+  var humidity =  document.getElementById("data2").value;
+  var pm2 =  document.getElementById("data3").value;
+  var co =  document.getElementById("data4").value;
+  var lpg  =  document.getElementById("data5").value;
+
+  var da= google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['PM 2.5', parseInt(pm2)],
+  ['CO', parseInt(co)],
+  ['LPG Gas Detection', parseInt(lpg)],
+  ['Fresh Air', 10000],
+
+]);
+
+// console.log(data);
+// console.log(d);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Air Quality Indexing', 'width':900, 'height':600};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(da, options);
+}
+
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  }).add({
+    targets: '.ml3',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+  </body>
+</html>
