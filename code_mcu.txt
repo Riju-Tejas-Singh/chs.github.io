@@ -1,0 +1,155 @@
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+#include <ESP8266WiFi.h>
+#include <ThingSpeak.h>
+
+
+WiFiClient client;
+
+long myChannelNumber = 1684938;
+String myWriteAPIKey = "HZ8D6NS20O1BLSPH";
+const char* server = "api.thingspeak.com";
+
+int value1;
+int value2;
+int value3;
+int value4;
+// Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup()
+{
+
+  // initialize the LCD
+  pinMode(16, INPUT); 
+  pinMode(0, INPUT); 
+  pinMode(12, INPUT); 
+  pinMode(14, INPUT); 
+  lcd.begin();
+  Serial.begin(9600);
+  // Turn on the blacklight and print a message.
+  lcd.backlight();
+  
+  WiFi.begin("RIJUL", "kamna.83");
+  while(WiFi.status() != WL_CONNECTED)
+  {
+    delay(200);
+    Serial.print("..");
+  }
+  Serial.println();
+  Serial.println("NodeMCU is connected!");
+  Serial.println(WiFi.localIP());chh
+  
+  ThingSpeak.begin(client);
+
+  
+
+} 
+
+void loop() 
+{
+
+value1 = digitalRead( 16 ); // read value on pin 2 
+if(value1 == 0){
+
+   Serial.println("1 : full " ); // print value on serial terminal 
+   lcd.print("1:Full ");
+   Serial.println();
+    // ThingSpeak.writeField(myChannelNumber, 1 ,  1 , myWriteAPIKey);
+}
+else {
+
+     Serial.println(" 1: empty" ); // print value on serial terminal 
+     lcd.print("1:Empty ");
+     Serial.println();
+     // ThingSpeak.writeField(myChannelNumber,  1 ,  0 , myWriteAPIKey);
+}
+   
+value2 = digitalRead( 0 ); // read value on pin 2 
+if(value2 == 0){
+
+   Serial.println("2:full" ); // print value on serial terminal 
+   lcd.print("2:Full " );
+   Serial.println();
+
+   // ThingSpeak.writeField(myChannelNumber, 2 , 1 , myWriteAPIKey);
+}
+else {
+
+     Serial.println(" 2: empty" ); // print value on serial terminal 
+     lcd.print("2:Empty " );
+     Serial.println();
+     // ThingSpeak.writeField(myChannelNumber, 2 , 0, myWriteAPIKey);
+}
+
+lcd.setCursor(0,1);
+
+value3 = digitalRead( 14 ); // read value on pin 2 
+if(value3 == 0){
+
+   Serial.println("3 : full " ); // print value on serial terminal 
+   lcd.print("3:Full ");
+   Serial.println();
+   // ThingSpeak.writeField(myChannelNumber, 3 , 1 , myWriteAPIKey);
+}
+else {
+
+     Serial.println(" 3: empty" ); // print value on serial terminal 
+     lcd.print("3:Empty ");
+     Serial.println();
+     // ThingSpeak.writeField(myChannelNumber, 3 , 0 , myWriteAPIKey);
+}
+   
+value4 = digitalRead( 12 ); // read value on pin 2 
+if(value4 == 0){
+
+   Serial.println("4:full" ); // print value on serial terminal 
+   lcd.print("4:Full " );
+   Serial.println();
+   // ThingSpeak.writeField(myChannelNumber, 4 , 1 , myWriteAPIKey);
+}
+else {
+
+     Serial.println(" 4: empty" ); // print value on serial terminal 
+     lcd.print("4:Empty " );
+     Serial.println();
+     // ThingSpeak.writeField(myChannelNumber, 4  , 0 , myWriteAPIKey);
+}
+
+
+ 
+                      if (client.connect(server,80))   //   "184.106.153.149" or api.thingspeak.com
+                      {  
+                            
+                             String postStr = myWriteAPIKey ;
+                             postStr +="&field1=";
+                             postStr += String(value1);
+                             postStr +="&field2=";
+                             postStr += String(value2);
+                             postStr +="&field3=";
+                             postStr += String(value3);
+                             postStr +="&field4=";
+                             postStr += String(value4);
+                             postStr += "\r\n\r\n";
+ 
+                             client.print("POST /update HTTP/1.1\n");
+                             client.print("Host: api.thingspeak.com\n");
+                             client.print("Connection: close\n");
+                             client.print("X-THINGSPEAKAPIKEY: "+myWriteAPIKey+"\n");
+                             client.print("Content-Type: application/x-www-form-urlencoded\n");
+                             client.print("Content-Length: ");
+                             client.print(postStr.length());
+                             client.print("\n\n");
+                             client.print(postStr);
+ 
+                        }
+          client.stop();
+ 
+          Serial.println("Waiting...");
+
+  
+
+ delay(1000);
+ lcd.setCursor(0,0);
+  
+}
